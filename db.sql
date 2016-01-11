@@ -1,11 +1,11 @@
 CREATE TABLE Contract_type(
-	id int,
+	id int AUTO_INCREMENT,
 	name varchar(150),
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE Employee (
-	id int,
+	id int AUTO_INCREMENT,
 	name varchar(100),
 	surname varchar(100),
 	date_of_employment date,
@@ -17,7 +17,7 @@ CREATE TABLE Employee (
 );
 
 CREATE TABLE Customer(
-	id int,
+	id int AUTO_INCREMENT,
 	name varchar(100),
 	surname varchar(100),
 	adress varchar(300),
@@ -25,13 +25,13 @@ CREATE TABLE Customer(
 );
 
 CREATE TABLE Equipment_type(
-	id int,
+	id int AUTO_INCREMENT,
 	name varchar(100),
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE Equipment(
-	id int,
+	id int AUTO_INCREMENT,
 	serial_number varchar(100),
 	name varchar(100),
 	type_id int,
@@ -44,14 +44,14 @@ CREATE TABLE Equipment(
 );
 
 CREATE TABLE Membership_type(
-	id int,
+	id int AUTO_INCREMENT,
 	name varchar(100),
 	length_days int,
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE Membership(
-	id int,
+	id int AUTO_INCREMENT,
 	customer_id int,
 	membership_type_id int,
 	start_date date,
@@ -61,5 +61,16 @@ CREATE TABLE Membership(
 		REFERENCES Membership_type (id)
 );
 
+
+/*
+ drop table employee;
+ drop table contract_type;
+ drop table customer;
+ drop table Equipment;
+ drop table Equipment_type;
+ drop table Membership;
+ drop table Membership_type;
+ */
+ 
 
 

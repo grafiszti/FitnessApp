@@ -3,27 +3,33 @@ package pl.grafiszti.fitness.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("fitness.web")
+@ComponentScan
 public class WebConfig extends WebMvcConfigurerAdapter {
+
   @Bean
-  public ViewResolver viewResolver() {
-    InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-    resolver.setPrefix("/WEB-INF/views/");
-    resolver.setSuffix(".ftl");
-    resolver.setExposeContextBeansAsAttributes(true);
-    return resolver;
+  public FreeMarkerConfigurer freeMarkerConfigurer() {
+    FreeMarkerConfigurer fmc = new FreeMarkerConfigurer();
+    fmc.setTemplateLoaderPath("/WEB-INF/views/");
+    return fmc;
   }
 
-  @Override
-  public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-    configurer.enable();
+  @Bean
+  public FreeMarkerViewResolver freeMarkerViewResolver() {
+    FreeMarkerViewResolver fvr = new FreeMarkerViewResolver();
+    fvr.setCache(false);
+    fvr.setPrefix("");
+    fvr.setSuffix(".ftl");
+    fvr.setRequestContextAttribute("rc");
+    return fvr;
   }
 }
