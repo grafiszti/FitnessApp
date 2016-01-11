@@ -20,7 +20,7 @@ CREATE TABLE Customer(
 	id int AUTO_INCREMENT,
 	name varchar(100),
 	surname varchar(100),
-	adress varchar(300),
+	address varchar(300),
 	PRIMARY KEY (id)
 );
 

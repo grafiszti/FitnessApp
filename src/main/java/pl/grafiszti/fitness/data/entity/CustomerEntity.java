@@ -21,12 +21,12 @@ public class CustomerEntity {
   Long id;
   String name;
   String surname;
-  String adress;
+  String address;
 
-  public CustomerEntity(String name, String surname, String adress) {
+  public CustomerEntity(String name, String surname, String address) {
     this.name = name;
     this.surname = surname;
-    this.adress = adress;
+    this.address = address;
   }
 
 }

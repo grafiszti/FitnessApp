@@ -1,5 +1,7 @@
 package pl.grafiszti.fitness.data.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +23,12 @@ public class MembershipTypeEntity {
   private Long id;
   private String name;
   private int lengthDays;
+  private BigDecimal price;
 
-  public MembershipTypeEntity(String name, int lengthDays) {
+
+  public MembershipTypeEntity(String name, int lengthDays, BigDecimal price) {
     this.name = name;
     this.lengthDays = lengthDays;
+    this.price = price;
   }
 }

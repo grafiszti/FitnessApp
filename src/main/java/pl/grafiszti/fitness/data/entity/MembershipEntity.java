@@ -26,20 +26,18 @@ public class MembershipEntity {
   private Long id;
 
   @OneToOne(fetch = FetchType.EAGER)
-  CustomerEntity customer;
+  private CustomerEntity customer;
 
   @OneToOne(fetch = FetchType.EAGER)
-  MembershipTypeEntity membershipType;
+  private MembershipTypeEntity membershipType;
 
-  Date startDate;
+  private Date startDate;
 
-  BigDecimal price;
 
   public MembershipEntity(CustomerEntity customer, MembershipTypeEntity membershipType,
-      Date startDate, BigDecimal price) {
+      Date startDate) {
     this.customer = customer;
     this.membershipType = membershipType;
     this.startDate = startDate;
-    this.price = price;
   }
 }
