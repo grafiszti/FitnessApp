@@ -12,10 +12,14 @@ public class ContractTypeService {
   ContractTypeRepository contractTypeRepository;
 
   public ContractTypeEntity findById(Long id) {
-    return contractTypeRepository.findOne(id);
+    return contractTypeRepository.findById(id);
   }
 
   public void save(ContractTypeEntity contractType) {
     contractTypeRepository.save(contractType);
+  }
+  
+  public ContractTypeEntity findByName(String name){
+    return contractTypeRepository.findByName(name);
   }
 }
