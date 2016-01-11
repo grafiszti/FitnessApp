@@ -25,4 +25,8 @@ public class EmployeeService {
   public List<EmployeeEntity> findAll() {
     return employeeRepository.findAll();
   }
+
+  public void deleteById(Long id) {
+    employeeRepository.delete(id);
+  }
 }

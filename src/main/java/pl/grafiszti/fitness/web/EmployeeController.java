@@ -51,4 +51,11 @@ public class EmployeeController {
     initModel(model);
     return VIEW_NAME;
   }
+
+  @RequestMapping(value = "/removeEmployee", method = RequestMethod.GET)
+  public String removeEmployee(@RequestParam(value = "id") Long id, Model model) {
+    employeeService.deleteById(id);
+    initModel(model);
+    return VIEW_NAME;
+  }
 }

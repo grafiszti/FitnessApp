@@ -14,6 +14,13 @@
 						location.reload();
 				    });
 				});
+				
+				$(".delete_button").on("click", function(event){
+					alert(event.target.id);
+					$.get("removeEmployee?id=" + event.target.id, function(){
+						location.reload();
+				    });
+				});
 			});
 		</script>
 	</head>
@@ -48,6 +55,7 @@
 				  			<td><#if employee.dateOfEmployment??>${employee.dateOfEmployment?date}</#if><td>
 				  			<td><#if employee.contractType??>${employee.contractType.name}</#if><td>
 				  			<td><#if employee.salaryHour??>${employee.salaryHour}</#if><td>
+				  			<rd><button class="delete_button" id=${employee.id}>delete</button></td>
 				  		</tr>
 					</#list>
 				</#if>
