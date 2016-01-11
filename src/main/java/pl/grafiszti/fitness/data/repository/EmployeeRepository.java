@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import pl.grafiszti.fitness.entity.EmployeeEntity;
+import pl.grafiszti.fitness.data.entity.EmployeeEntity;
 
 
 @Repository

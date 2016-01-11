@@ -1,4 +1,4 @@
-package pl.grafiszti.fitness.entity;
+package pl.grafiszti.fitness.data.entity;
 
 import java.util.Date;
 

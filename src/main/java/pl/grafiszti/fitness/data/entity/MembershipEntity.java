@@ -1,4 +1,4 @@
-package pl.grafiszti.fitness.entity;
+package pl.grafiszti.fitness.data.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package pl.grafiszti.fitness.entity;
+package pl.grafiszti.fitness.data.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,16 +14,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "membership_type")
-public class MembershipTypeEntity {
+@Table(name = "customer")
+public class CustomerEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
-  private String name;
-  private int lengthDays;
+  Long id;
+  String name;
+  String surname;
+  String adress;
 
-  public MembershipTypeEntity(String name, int lengthDays) {
+  public CustomerEntity(String name, String surname, String adress) {
     this.name = name;
-    this.lengthDays = lengthDays;
+    this.surname = surname;
+    this.adress = adress;
   }
+
 }

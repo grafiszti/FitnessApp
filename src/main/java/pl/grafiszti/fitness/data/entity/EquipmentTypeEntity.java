@@ -1,4 +1,4 @@
-package pl.grafiszti.fitness.entity;
+package pl.grafiszti.fitness.data.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
