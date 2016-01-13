@@ -1,10 +1,15 @@
 <html>
 	<head>
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="resources/default/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+		<link href="resources/css/font-awesome.min.css" rel="stylesheet" media="screen">
+		<link href="resources/css/bootswatch.css" rel="stylesheet" media="screen">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$("#save_button").on("click", function(){
-					var url = "addEmployee?name=" + $("#nameInput").val() +
+					var url = "addEmployee?id=" + "<#if currentEmployee??>${currentEmployee.id}</#if>" +
+						"&name=" + $("#nameInput").val() +
 						"&surname=" + $("#surnameInput").val() + 
 						"&dateOfEmployment=" + $("#dateOfEmploymentInput").val() +
 						"&contractType=" + $("#contractTypeInput").val() + 
@@ -21,18 +26,25 @@
 						location.reload();
 				    });
 				});
+				
+				$(".edit_button").on("click", function(event){
+					window.open("editEmployee?id=" + event.target.id);
+				});
 			});
 		</script>
 	</head>
+	<#include "menu.ftl">
 	<body>
 		<div>
 			<form>
-				<input id="nameInput" type="text" label="Name: "/>
-				<input id="surnameInput" type="text" label="Surname: "/>
-				<input id="dateOfEmploymentInput" type="date" label="Date of employment: "/>
-				<input id="contractTypeInput" type="text" label="Contract type: "/>
-				<input id="salaryHourInput" type="number" label="salary/h: "/>
+				<input id="idInput" type="hidden" />
+				<input id="nameInput" type="text" label="Name: " />
+				<input id="surnameInput" type="text" label="Surname: " />
+				<input id="dateOfEmploymentInput" type="date" label="Date of employment: " />
+				<input id="contractTypeInput" type="text" label="Contract type: " />
+				<input id="salaryHourInput" type="number" label="salary/h: " />
 				<input id="save_button" type="submit" label="save"/>
+				<button id="clear_button">clear</button>
 			</form>
 		</div>
 		
@@ -45,6 +57,8 @@
 					<th>Date of employment</th>
 					<th>Contract type</th>
 					<th>Salary/h</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				<tr>
 				<#if employees??>
 					<#list employees as employee>
@@ -55,7 +69,8 @@
 				  			<td><#if employee.dateOfEmployment??>${employee.dateOfEmployment?date}</#if><td>
 				  			<td><#if employee.contractType??>${employee.contractType.name}</#if><td>
 				  			<td><#if employee.salaryHour??>${employee.salaryHour}</#if><td>
-				  			<rd><button class="delete_button" id=${employee.id}>delete</button></td>
+				  			<td><button class="edit_button" id=${employee.id}>edit</button></td>
+				  			<td><button class="delete_button" id=${employee.id}>delete</button></td>
 				  		</tr>
 					</#list>
 				</#if>

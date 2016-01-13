@@ -15,7 +15,7 @@ public class EmployeeService {
   EmployeeRepository employeeRepository;
 
   public EmployeeEntity findById(Long id) {
-    return employeeRepository.findOne(id);
+    return employeeRepository.findById(id);
   }
 
   public void save(EmployeeEntity employee) {
@@ -27,6 +27,6 @@ public class EmployeeService {
   }
 
   public void deleteById(Long id) {
-    employeeRepository.delete(id);
+    employeeRepository.deleteById(id);
   }
 }

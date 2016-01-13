@@ -2,13 +2,16 @@ package pl.grafiszti.fitness.data.repository;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
 import pl.grafiszti.fitness.data.entity.EmployeeEntity;
 
-
-@Repository
-public interface EmployeeRepository extends CrudRepository<EmployeeEntity, Long>{
+public interface EmployeeRepository extends Repository<EmployeeEntity, Long> {
   List<EmployeeEntity> findAll();
+
+  EmployeeEntity findById(Long id);
+
+  void save(EmployeeEntity employee);
+
+  void deleteById(Long id);
 }
