@@ -1,9 +1,6 @@
 <html>
 	<head>
-		<link href="resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="resources/default/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-		<link href="resources/css/font-awesome.min.css" rel="stylesheet" media="screen">
-		<link href="resources/css/bootswatch.css" rel="stylesheet" media="screen">
+		<#include "header.ftl">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -49,31 +46,35 @@
 		</div>
 		
 		<div>
-			<table>
-				<tr>
-					<th>Id</th>
-					<th>Name</th>
-					<th>Surname</th>
-					<th>Date of employment</th>
-					<th>Contract type</th>
-					<th>Salary/h</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				<tr>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Surname</th>
+						<th>Date of employment</th>
+						<th>Contract type</th>
+						<th>Salary/h</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
 				<#if employees??>
 					<#list employees as employee>
 				  		<tr>
-				  			<td><#if employee.id??>${employee.id}</#if><td>
-				  			<td><#if employee.name??>${employee.name}</#if><td>
-				  			<td><#if employee.surname??>${employee.surname}</#if><td>
-				  			<td><#if employee.dateOfEmployment??>${employee.dateOfEmployment?date}</#if><td>
-				  			<td><#if employee.contractType??>${employee.contractType.name}</#if><td>
-				  			<td><#if employee.salaryHour??>${employee.salaryHour}</#if><td>
+				  			<td><#if employee.id??>${employee.id}</#if></td>
+				  			<td><#if employee.name??>${employee.name}</#if></td>
+				  			<td><#if employee.surname??>${employee.surname}</#if></td>
+				  			<td><#if employee.dateOfEmployment??>${employee.dateOfEmployment?date}</#if></td>
+				  			<td><#if employee.contractType??>${employee.contractType.name}</#if></td>
+				  			<td><#if employee.salaryHour??>${employee.salaryHour}</#if></td>
 				  			<td><button class="edit_button" id=${employee.id}>edit</button></td>
 				  			<td><button class="delete_button" id=${employee.id}>delete</button></td>
 				  		</tr>
 					</#list>
 				</#if>
+				</tbody>
 			<table>
 		</div>
 	</body>
