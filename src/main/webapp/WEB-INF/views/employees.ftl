@@ -34,6 +34,7 @@
 	<body>
 		<div>
 			<form>
+				<label></label>
 				<input id="idInput" type="hidden" />
 				<input id="nameInput" type="text" label="Name: " />
 				<input id="surnameInput" type="text" label="Surname: " />

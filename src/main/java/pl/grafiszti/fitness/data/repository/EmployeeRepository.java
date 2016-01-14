@@ -13,5 +13,5 @@ public interface EmployeeRepository extends Repository<EmployeeEntity, Long> {
 
   void save(EmployeeEntity employee);
 
-  void deleteById(Long id);
+  void delete(Long id);
 }
