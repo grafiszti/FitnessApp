@@ -3,20 +3,20 @@
 		<#include "header.ftl">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function() {
+            $(document).ready(function() {
 				$("#save_button").on("click", function(){
-					var url = "addEmployee?id=" + "<#if currentEmployee??>${currentEmployee.id}</#if>" +
+					var url = "addEmployee?id=" + $("#idInput").val() +
 						"&name=" + $("#nameInput").val() +
 						"&surname=" + $("#surnameInput").val() +
 						"&dateOfEmployment=" + $("#dateOfEmploymentInput").val() +
-						"&contractType=" + $("#contractTypeInput").val() +
+						"&contractTypeId=" + $("#contractTypeSelectBox").val() +
 						"&salaryHour=" + $("#salaryHourInput").val();
-						alert(url);
 					$.get(url, function(){
 						location.reload();
 				    });
-				});
 
+				});
+				
 				$(".delete_button").on("click", function(event){
 					alert(event.target.id);
 					$.get("removeEmployee?id=" + event.target.id, function(){
@@ -25,7 +25,20 @@
 				});
 
 				$(".edit_button").on("click", function(event){
-					window.open("editEmployee?id=" + event.target.id);
+					$.ajax({     
+					    type: "GET",
+					    url: "getEmployee",
+					    data: "id=" + event.target.id,
+					    success: function (data) {
+					    	$("#idInput").val(data.id);
+					    	$("#nameInput").val(data.name);
+					    	$("#surnameInput").val(data.surname);
+					    	$("#dateOfEmploymentInput").val(new Date(data.dateOfEmployment));
+					    	$("#contractTypeSelectBox").attr("selected", data.contractType.name);
+					    	$("#salaryHourInput").val(data.salaryHour);
+					    },
+					    dataType: "json"
+					});
 				});
 			});
 		</script>
@@ -36,11 +49,15 @@
             <h4>Add employee</h4>
             <div>
                 <form class="form-inline">
-                    <input id="idInput" type="hidden" />
-                    <input id="nameInput" type="text" placeholder="Name"/>
+                    <input id="idInput" type="hidden"/>
+                    <input id="nameInput" type="text" placeholder="Name" />
                     <input id="surnameInput" type="text" placeholder="Surname" />
                     <input id="dateOfEmploymentInput" type="date" placeholder="Date of employment" />
-                    <input id="contractTypeInput" type="text" placeholder="Contract type" />
+                    <select id="contractTypeSelectBox" selected="">
+                    	<#list contractTypes as contractType>
+                    		<option value=${contractType.id}>${contractType.name}</option>
+                    	</#list>
+                    </select>
                     <input id="salaryHourInput" type="number" placeholder="$/h" />
                     <input id="save_button" type="submit" value="save" class="btn btn-default"/>
                     <button id="clear_button" class="btn btn-alert">clear</button>

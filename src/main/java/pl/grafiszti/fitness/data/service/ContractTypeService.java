@@ -1,5 +1,7 @@
 package pl.grafiszti.fitness.data.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,11 @@ public class ContractTypeService {
     contractTypeRepository.save(contractType);
   }
   
-  public ContractTypeEntity findByName(String name){
+  public ContractTypeEntity findByName(String name) {
     return contractTypeRepository.findByName(name);
+  }
+
+  public List<ContractTypeEntity> findAll() {
+    return contractTypeRepository.findAll();
   }
 }

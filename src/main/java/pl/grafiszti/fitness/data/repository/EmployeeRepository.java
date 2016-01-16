@@ -9,7 +9,7 @@ import pl.grafiszti.fitness.data.entity.EmployeeEntity;
 public interface EmployeeRepository extends Repository<EmployeeEntity, Long> {
   List<EmployeeEntity> findAll();
 
-  EmployeeEntity findById(Long id);
+  EmployeeEntity findOne(Long id);
 
   void save(EmployeeEntity employee);
 

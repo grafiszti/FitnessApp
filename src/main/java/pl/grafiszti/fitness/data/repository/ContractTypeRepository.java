@@ -1,5 +1,7 @@
 package pl.grafiszti.fitness.data.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.Repository;
 
 import pl.grafiszti.fitness.data.entity.ContractTypeEntity;
@@ -10,4 +12,6 @@ public interface ContractTypeRepository extends Repository<ContractTypeEntity, L
   ContractTypeEntity findByName(String name);
 
   void save(ContractTypeEntity contractType);
+
+  List<ContractTypeEntity> findAll();
 }

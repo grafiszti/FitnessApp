@@ -14,8 +14,8 @@ public class EmployeeService {
   @Autowired
   EmployeeRepository employeeRepository;
 
-  public EmployeeEntity findById(Long id) {
-    return employeeRepository.findById(id);
+  public EmployeeEntity findEmployeeById(Long id) {
+    return employeeRepository.findOne(id);
   }
 
   public void save(EmployeeEntity employee) {
