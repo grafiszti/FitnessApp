@@ -20,7 +20,6 @@ import pl.grafiszti.fitness.data.service.EmployeeService;
 @Controller
 public class EmployeeController {
   private static final String VIEW_NAME = "employees";
-  private static final String EDITED_EMPLOYEE = "editedEmployee";
   private static final String EMPLOYEES = VIEW_NAME;
   private static final String CONTRACT_TYPES = "contractTypes";
 
@@ -53,7 +52,6 @@ public class EmployeeController {
       @RequestParam(value = "salaryHour") Integer salaryHour, Model model) {
     employeeService.save(new EmployeeEntity(id, name, surname, new Date(),
         contractTypeService.findById(contractTypeId), salaryHour));
-    model.addAttribute(EDITED_EMPLOYEE, new EmployeeEntity());
     return VIEW_NAME;
   }
 
@@ -66,7 +64,6 @@ public class EmployeeController {
   @RequestMapping(value = "/removeEmployee", method = RequestMethod.GET)
   public String removeEmployee(@RequestParam(value = "id") Long id, Model model) {
     employeeService.deleteById(id);
-    model.addAttribute(EDITED_EMPLOYEE, new EmployeeEntity());
     return VIEW_NAME;
   }
 }

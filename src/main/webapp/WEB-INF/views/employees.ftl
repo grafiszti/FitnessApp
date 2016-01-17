@@ -5,20 +5,19 @@
 		<script type="text/javascript">
             $(document).ready(function() {
 				$("#save_button").on("click", function(){
-					var url = "addEmployee?id=" + $("#idInput").val() +
-						"&name=" + $("#nameInput").val() +
-						"&surname=" + $("#surnameInput").val() +
-						"&dateOfEmployment=" + $("#dateOfEmploymentInput").val() +
-						"&contractTypeId=" + $("#contractTypeSelectBox").val() +
-						"&salaryHour=" + $("#salaryHourInput").val();
-					$.get(url, function(){
-						location.reload();
-				    });
-
+				    $.ajax({     
+					    type: "GET",
+					    url: "addEmployee",
+					    data: "id=" + $("#idInput").val() + "&name=" + $("#nameInput").val() +
+								"&surname=" + $("#surnameInput").val() + "&dateOfEmployment=" + $("#dateOfEmploymentInput").val() +
+								"&contractTypeId=" + $("#contractTypeSelectBox").val() + "&salaryHour=" + $("#salaryHourInput").val(),
+					    success: function (data) {
+					    	document.location.reload(true);
+					    },
+					});
 				});
 				
 				$(".delete_button").on("click", function(event){
-					alert(event.target.id);
 					$.get("removeEmployee?id=" + event.target.id, function(){
 						location.reload();
 				    });
@@ -30,16 +29,25 @@
 					    url: "getEmployee",
 					    data: "id=" + event.target.id,
 					    success: function (data) {
-					    	$("#idInput").val(data.id);
-					    	$("#nameInput").val(data.name);
-					    	$("#surnameInput").val(data.surname);
-					    	$("#dateOfEmploymentInput").val(new Date(data.dateOfEmployment));
-					    	$("#contractTypeSelectBox").attr("selected", data.contractType.name);
-					    	$("#salaryHourInput").val(data.salaryHour);
+					    	setFormData(data.id, data.name, data.surname, new Date(data.dateOfEmployment), data.contractType.name, data.salaryHour);
 					    },
 					    dataType: "json"
 					});
 				});
+				
+				function setFormData(id, name, surname, dateOfEmployment, contractType, salaryHour){
+					$("#idInput").val(id);
+			    	$("#nameInput").val(name);
+			    	$("#surnameInput").val(surname);
+			    	$("#dateOfEmploymentInput").val(dateOfEmployment);
+			    	$("#contractTypeSelectBox").attr("selected", contractType.name);
+			    	$("#salaryHourInput").val(salaryHour);
+				}
+				
+				$(".clear_button").on("click", function(event){
+					setFormData("", "", "", new Date(), $('#contractTypeSelectBox option:first-child').attr("selected", "selected").name, "");
+				});
+				
 			});
 		</script>
 	</head>
@@ -59,7 +67,7 @@
                     	</#list>
                     </select>
                     <input id="salaryHourInput" type="number" placeholder="$/h" />
-                    <input id="save_button" type="submit" value="save" class="btn btn-default"/>
+                    <button id="save_button" class="btn btn-default">save</button>
                     <button id="clear_button" class="btn btn-alert">clear</button>
                 </form>
             </div>
