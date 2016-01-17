@@ -12,6 +12,12 @@ CREATE TABLE Contract_type (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE Role_type (
+  id   INT AUTO_INCREMENT,
+  name VARCHAR(150),
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE Employee (
   id                 INT AUTO_INCREMENT,
   name               VARCHAR(100),

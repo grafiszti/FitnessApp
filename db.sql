@@ -1,19 +1,37 @@
+drop table employee;
+drop table contract_type;
+drop table role_type;
+drop table customer;
+drop table Equipment; 
+drop table Equipment_type;
+drop table Membership;
+drop table Membership_type;
+
 CREATE TABLE Contract_type(
 	id int AUTO_INCREMENT,
 	name varchar(150),
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE Role_type (
+  id INT AUTO_INCREMENT,
+  name VARCHAR(150),
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE Employee (
-	id int AUTO_INCREMENT,
-	name varchar(100),
-	surname varchar(100),
-	date_of_employment date,
-	contract_type_id int,
-	salary_hour int,
-	PRIMARY KEY (id),
-	CONSTRAINT `contract_type_id_f` FOREIGN KEY (contract_type_id) 
-		REFERENCES Contract_type (id)
+  id INT AUTO_INCREMENT,
+  name VARCHAR(100),
+  surname VARCHAR(100),
+  login VARCHAR(100),
+  password VARCHAR(100),
+  date_of_employment DATE,
+  contract_type_id INT,
+  role_type_id INT,
+  salary_hour INT,
+  PRIMARY KEY (id),
+  CONSTRAINT `contract_type_id_f` FOREIGN KEY (contract_type_id) REFERENCES Contract_type (id),
+  CONSTRAINT `role_type_id_f` FOREIGN KEY (role_type_id) REFERENCES ROLE_TYPE (id)
 );
 
 CREATE TABLE Customer(
@@ -60,17 +78,3 @@ CREATE TABLE Membership(
 	CONSTRAINT `Membership_type_id_f` FOREIGN KEY (membership_type_id) 
 		REFERENCES Membership_type (id)
 );
-
-
-/*
- drop table employee;
- drop table contract_type;
- drop table customer;
- drop table Equipment;
- drop table Equipment_type;
- drop table Membership;
- drop table Membership_type;
- */
- 
-
-

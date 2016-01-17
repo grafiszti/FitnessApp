@@ -27,18 +27,28 @@ public class EmployeeEntity {
   private Long id;
   private String name;
   private String surname;
+  private String login;
+  private String password;
   private Date dateOfEmployment;
 
   @OneToOne(fetch = FetchType.EAGER)
   private ContractTypeEntity contractType;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  private RoleTypeEntity roleType;
+
   private Integer salaryHour;
 
-  public EmployeeEntity(String name, String surname, Date dateOfEmployment,
-      ContractTypeEntity contractType, Integer salaryHour) {
+  public EmployeeEntity(String name, String surname, String login, String password,
+      Date dateOfEmployment, ContractTypeEntity contractType, RoleTypeEntity roleType,
+      Integer salaryHour) {
     this.name = name;
     this.surname = surname;
+    this.login = login;
+    this.password = password;
     this.dateOfEmployment = dateOfEmployment;
     this.contractType = contractType;
+    this.roleType = roleType;
     this.salaryHour = salaryHour;
   }
 }
