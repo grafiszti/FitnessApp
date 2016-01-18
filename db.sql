@@ -78,3 +78,12 @@ CREATE TABLE Membership(
 	CONSTRAINT `Membership_type_id_f` FOREIGN KEY (membership_type_id) 
 		REFERENCES Membership_type (id)
 );
+
+
+INSERT INTO `Role_type` (`id`, `name`) VALUES ('1', 'admin');
+INSERT INTO `Role_type` (`id`, `name`) VALUES ('2', 'user');
+INSERT INTO `Contract_type` (`id`, `name`) VALUES ('1', 'random');
+INSERT INTO `Employee` (`id`, `name`, `surname`, `login`, `password`, `date_of_employment`, 
+`contract_type_id`, `role_type_id`, `salary_hour`) 
+VALUES ('1', 'admin', 'admin', 'admin', 'admin', '2016-01-07', '1', '1', '1'), 
+('2', 'user', 'user', 'user', 'user', '2016-01-27', '1', '2', '2');

@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
   private static final String VIEW_NAME = "login";
 
-  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
   public String login(Model model) {
     return VIEW_NAME;
+  }
+  
+  @RequestMapping(value = "/error", method = {RequestMethod.GET, RequestMethod.POST})
+  public String error(Model model) {
+    return "error";
   }
 }

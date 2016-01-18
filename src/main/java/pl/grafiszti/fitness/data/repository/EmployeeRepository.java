@@ -14,4 +14,6 @@ public interface EmployeeRepository extends Repository<EmployeeEntity, Long> {
   void save(EmployeeEntity employee);
 
   void delete(Long id);
+  
+  EmployeeEntity findByLogin(String login);
 }
