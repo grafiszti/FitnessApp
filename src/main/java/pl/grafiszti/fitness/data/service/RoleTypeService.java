@@ -28,4 +28,9 @@ public class RoleTypeService {
   public List<RoleTypeEntity> findAll() {
     return roleTypeRepository.findAll();
   }
+
+  public void deleteById(Long id) {
+    roleTypeRepository.delete(id);
+
+  }
 }

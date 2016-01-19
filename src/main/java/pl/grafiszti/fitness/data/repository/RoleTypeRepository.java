@@ -14,5 +14,7 @@ public interface RoleTypeRepository extends Repository<RoleTypeEntity, Long> {
 
   void save(RoleTypeEntity contractType);
 
+  void delete(Long id);
+
   List<RoleTypeEntity> findAll();
 }

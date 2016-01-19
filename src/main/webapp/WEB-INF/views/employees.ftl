@@ -24,7 +24,7 @@
 				
 				$(".delete_button").on("click", function(event){
 					$.get("removeEmployee?id=" + event.target.id, function(){
-						location.reload();
+						document.location.reload(true);
 				    });
 				});
 
