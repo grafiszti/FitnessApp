@@ -1,9 +1,19 @@
 package pl.grafiszti.fitness.data.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.data.repository.Repository;
 
 import pl.grafiszti.fitness.data.entity.EquipmentTypeEntity;
 
-public interface EquipmentTypeRepository extends CrudRepository<EquipmentTypeEntity, Long> {
+public interface EquipmentTypeRepository extends Repository<EquipmentTypeEntity, Long> {
+  EquipmentTypeEntity findById(Long id);
 
+  EquipmentTypeEntity findByName(String name);
+
+  void save(EquipmentTypeEntity eqType);
+
+  void delete(Long id);
+
+  List<EquipmentTypeEntity> findAll();
 }
