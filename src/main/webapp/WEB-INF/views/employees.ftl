@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<#include "header.ftl">
+		<#include "partials/header.ftl">
 		<script type="text/javascript">
             $(document).ready(function() {
 				$("#save_button").on("click", function(){
@@ -64,7 +64,7 @@
 		</script>
 	</head>
 	<body>
-		<#include "menu.ftl">
+		<#include "partials/menu.ftl">
         <div class="container">
             <h4>Add employee</h4>
             <div>

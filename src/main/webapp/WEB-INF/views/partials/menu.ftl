@@ -8,6 +8,9 @@
           <li><a href="/employees">Employees</a></li>
           <li><a href="/customers">Customers</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+		  <li><a href="/logout">Log out</a></li>
+        </ul>
        </div>
      </div>
    </div>

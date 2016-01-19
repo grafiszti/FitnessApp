@@ -1,13 +1,13 @@
 <html>
 	<head>
-		<#include "header.ftl">
+		<#include "partials/header.ftl">
 		<link href="resources/css/signin.css" rel="stylesheet" media="screen">
 		<script>
 			
 		</script>
 	</head>
 	<body>
-		<#include "menu.ftl">
+		<#include "partials/menu.ftl">
 		<div class="container">
 			<form class="form-signin" action="/login" method="POST">
 				<h2 class="form-signin-heading">Please sign in</h2>

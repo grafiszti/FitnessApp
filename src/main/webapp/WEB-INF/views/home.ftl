@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<#include "header.ftl">
+		<#include "partials/header.ftl">
 	</head>
 	<body>
-		<#include "menu.ftl">
+		<#include "partials/menu.ftl">
 		This is home page
 	</body>
 </html>
