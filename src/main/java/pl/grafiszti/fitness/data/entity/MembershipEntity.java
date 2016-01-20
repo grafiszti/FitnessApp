@@ -1,5 +1,6 @@
 package pl.grafiszti.fitness.data.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,18 +27,21 @@ public class MembershipEntity {
   private Long id;
 
   @OneToOne(fetch = FetchType.EAGER)
-  private CustomerEntity customer;
-
-  @OneToOne(fetch = FetchType.EAGER)
   private MembershipTypeEntity membershipType;
 
   private Date startDate;
 
 
-  public MembershipEntity(CustomerEntity customer, MembershipTypeEntity membershipType,
-      Date startDate) {
-    this.customer = customer;
+  public MembershipEntity(MembershipTypeEntity membershipType, Date startDate) {
     this.membershipType = membershipType;
     this.startDate = startDate;
+  }
+
+  @Transient
+  public Date getEndDate() {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(startDate);
+    calendar.add(Calendar.DAY_OF_WEEK, membershipType.getLengthDays());
+    return calendar.getTime();
   }
 }
