@@ -65,6 +65,7 @@ CREATE TABLE Membership_type(
 	id int AUTO_INCREMENT,
 	name varchar(100),
 	length_days int,
+	price decimal,
 	PRIMARY KEY (id)
 );
 
@@ -73,15 +74,14 @@ CREATE TABLE Membership(
 	customer_id int,
 	membership_type_id int,
 	start_date date,
-	price decimal,
 	PRIMARY KEY (id),
 	CONSTRAINT `Membership_type_id_f` FOREIGN KEY (membership_type_id) 
 		REFERENCES Membership_type (id)
 );
 
 
-INSERT INTO `Role_type` (`id`, `name`) VALUES ('1', 'admin');
-INSERT INTO `Role_type` (`id`, `name`) VALUES ('2', 'user');
+INSERT INTO `Role_type` (`id`, `name`) VALUES ('1', 'ADMIN');
+INSERT INTO `Role_type` (`id`, `name`) VALUES ('2', 'USER');
 INSERT INTO `Contract_type` (`id`, `name`) VALUES ('1', 'random');
 INSERT INTO `Employee` (`id`, `name`, `surname`, `login`, `password`, `date_of_employment`, 
 `contract_type_id`, `role_type_id`, `salary_hour`) 

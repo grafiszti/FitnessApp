@@ -1,6 +1,5 @@
 package pl.grafiszti.fitness.data.entity;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
