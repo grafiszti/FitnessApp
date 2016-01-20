@@ -47,7 +47,7 @@
 	<body>
 		<#include "partials/menu.ftl">
         <div class="container">
-            <h4>Add role</h4>
+            <h4>Add/edit membership type</h4>
             <div>
                 <form class="form-inline">
                     <input id="idInput" type="hidden"/>
