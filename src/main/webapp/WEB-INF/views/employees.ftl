@@ -54,9 +54,9 @@
 				}
 				
 				$(".clear_button").on("click", function(event){
-					setFormData("", "", "", "", "" new Date(), 
-						$('#contractTypeSelectBox option:first-child').attr("selected", "selected").name,
-						$('#roleTypeSelectBox option:first-child').attr("selected", "selected").name,
+					setFormData("", "", "", "", "", new Date(),
+						$('#contractTypeSelectBox').find('option:first-child').attr("selected", "selected").name,
+						$('#roleTypeSelectBox').find('option:first-child').attr("selected", "selected").name,
 						 "");
 				});
 				

@@ -1,8 +1,5 @@
 package pl.grafiszti.fitness.web;
 
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +15,12 @@ import pl.grafiszti.fitness.data.entity.RoleTypeEntity;
 import pl.grafiszti.fitness.data.service.ContractTypeService;
 import pl.grafiszti.fitness.data.service.EmployeeService;
 import pl.grafiszti.fitness.data.service.RoleTypeService;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
@@ -49,7 +52,7 @@ public class EmployeeController {
   public List<ContractTypeEntity> getContractTypes() {
     return contractTypeService.findAll();
   }
-  
+
   @ModelAttribute(ROLE_TYPES)
   public List<RoleTypeEntity> getRoleTypes() {
     return roleTypeService.findAll();
@@ -63,8 +66,10 @@ public class EmployeeController {
       @RequestParam(value = "dateOfEmployment") String dateOfEmployment, @RequestParam(
           value = "contractTypeId") Long contractTypeId,
       @RequestParam(value = "roleTypeId") Long roleTypeId,
-      @RequestParam(value = "salaryHour") Integer salaryHour, Model model) {
-    employeeService.save(new EmployeeEntity(id, name, surname, login, password, new Date(),
+      @RequestParam(value = "salaryHour") Integer salaryHour, Model model) throws ParseException {
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date date = dateFormat.parse(dateOfEmployment);
+    employeeService.save(new EmployeeEntity(id, name, surname, login, password, date,
         contractTypeService.findById(contractTypeId), roleTypeService.findById(roleTypeId),
         salaryHour));
     return VIEW_NAME;

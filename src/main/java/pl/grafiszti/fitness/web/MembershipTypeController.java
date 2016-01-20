@@ -1,8 +1,5 @@
 package pl.grafiszti.fitness.web;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.grafiszti.fitness.data.entity.MembershipTypeEntity;
 import pl.grafiszti.fitness.data.service.MembershipTypeService;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @Controller
 public class MembershipTypeController {
@@ -34,10 +34,9 @@ public class MembershipTypeController {
   @RequestMapping(value = "/addMembershipType", method = RequestMethod.GET)
   public String addMembershipType(@RequestParam(value = "id") Long id,
       @RequestParam(value = "name") String name,
-      @RequestParam(value = "lengthInDays") int lengthInDays,
+      @RequestParam(value = "lengthInDays") int lengthDays,
       @RequestParam(value = "price") String price, Model model) {
-    membershipTypeService.save(new MembershipTypeEntity(id, name.toUpperCase(), lengthInDays,
-        new BigDecimal(price)));
+    membershipTypeService.save(new MembershipTypeEntity(id, name, lengthDays, new BigDecimal(price)));
     return VIEW_NAME;
   }
 

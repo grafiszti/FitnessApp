@@ -27,10 +27,4 @@ public class MembershipTypeEntity {
   private int lengthDays;
   private BigDecimal price;
 
-
-  public MembershipTypeEntity(String name, int lengthDays, BigDecimal price) {
-    this.name = name;
-    this.lengthDays = lengthDays;
-    this.price = price;
-  }
 }

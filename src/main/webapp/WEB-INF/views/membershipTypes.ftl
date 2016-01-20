@@ -9,8 +9,8 @@
 					    url: "addMembershipType",
 					    data: "id=" + $("#idInput").val() + 
 					    	  "&name=" + $("#nameInput").val() + 
-					    	  "&lengthInDays" + $("#lengthInDaysInput").val() +
-					    	  "&price" + $("#priceInput").val(),
+					    	  "&lengthInDays=" + $("#lengthInDaysInput").val() +
+					    	  "&price=" + $("#priceInput").val(),
 					    success: function (data) {
 					    	document.location.reload(true);
 					    },
@@ -34,7 +34,7 @@
                     <input id="idInput" type="hidden"/>
                     <input id="nameInput" type="text" placeholder="Name" />
                     <input id="lengthInDaysInput" type="number" placeholder="Length in days" />
-                    <input id="priceInput" type="text" placeholder="Price" />
+                    <input id="priceInput" type="number" step="0.01" placeholder="Price" />
                     <button id="save_button" class="btn btn-default">save</button>
                 </form>
             </div>
@@ -56,7 +56,7 @@
                     	<tr>
                             <td>${membershipType.id}</td>
                             <td>${membershipType.name}</td>
-                            <td>${membershipType.lengthInDays}</td>
+                            <td>${membershipType.lengthDays}</td>
                             <td>${membershipType.price}</td>
                             <td><button class="delete_button" id=${membershipType.id}>delete</button></td>
                         </tr>
