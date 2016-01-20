@@ -35,7 +35,7 @@
 					    data: "id=" + event.target.id,
 					    success: function (data) {
 					    	setFormData(data.id, data.name, data.surname, data.login, data.password,
-					    		new Date(data.dateOfEmployment), data.contractType.name, data.roleType.name, data.salaryHour);
+					    		new Date(data.dateOfEmployment), data.contractType.id, data.roleType.id, data.salaryHour);
 					    },
 					    dataType: "json"
 					});
@@ -47,9 +47,9 @@
 			    	$("#surnameInput").val(surname);
 			    	$("#loginInput").val(login);
 			    	$("#passwordInput").val(password);
-			    	$("#dateOfEmploymentInput").val(dateOfEmployment);
-			    	$("#contractTypeSelectBox").attr("selected", contractType.name);
-			    	$("#roleTypeSelectBox").attr("selected", roleType.name);
+			    	$("#dateOfEmploymentInput").val(getFormattedDate(dateOfEmployment));
+			    	$("#contractTypeSelectBox").val(contractType).change();
+			    	$("#roleTypeSelectBox").val(roleType).change();
 			    	$("#salaryHourInput").val(salaryHour);
 				}
 				
@@ -59,7 +59,13 @@
 						$('#roleTypeSelectBox').find('option:first-child').attr("selected", "selected").name,
 						 "");
 				});
-				
+                function getFormattedDate(date) {
+                    return date.getFullYear()
+                           + "-"
+                           + ("0" + (date.getMonth() + 1)).slice(-2)
+                           + "-"
+                           + ("0" + date.getDate()).slice(-2);
+                }
 			});
 		</script>
 	</head>
@@ -75,12 +81,12 @@
                     <input id="loginInput" type="text" placeholder="Login" />
                     <input id="passwordInput" type="text" placeholder="Password" />
                     <input id="dateOfEmploymentInput" type="date" placeholder="Date of employment" />
-                    <select id="contractTypeSelectBox" selected="">
+                    <select id="contractTypeSelectBox">
                     	<#list contractTypes as contractType>
                     		<option value=${contractType.id}>${contractType.name}</option>
                     	</#list>
                     </select>
-                    <select id="roleTypeSelectBox" selected="">
+                    <select id="roleTypeSelectBox">
                     	<#list roleTypes as roleType>
                     		<option value=${roleType.id}>${roleType.name}</option>
                     	</#list>
