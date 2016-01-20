@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.grafiszti.fitness.data.entity.MembershipTypeEntity;
 import pl.grafiszti.fitness.data.service.MembershipTypeService;
@@ -44,6 +45,12 @@ public class MembershipTypeController {
   public String removeMembershipType(@RequestParam(value = "id") Long id, Model model) {
     membershipTypeService.deleteById(id);
     return VIEW_NAME;
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "/getMembershipType", method = RequestMethod.GET)
+  public MembershipTypeEntity getMembershipType(@RequestParam(value = "id") Long id, Model model) {
+    return membershipTypeService.findById(id);
   }
 
 }

@@ -13,9 +13,28 @@
 					    	  "&price=" + $("#priceInput").val(),
 					    success: function (data) {
 					    	document.location.reload(true);
-					    },
+					    }
 					});
 				});
+
+                function setFormData(id, name, lengthDays, price) {
+                    $("#idInput").val(id);
+                    $("#nameInput").val(name);
+                    $("#lengthInDaysInput").val(lengthDays);
+                    $("#priceInput").val(price);
+                }
+
+                $(".edit_button").on("click", function(event){
+                    $.ajax({
+                               type: "GET",
+                               url: "getMembershipType",
+                               data: "id=" + event.target.id,
+                               success: function (data) {
+                                   setFormData(data.id, data.name, data.lengthDays, data.price);
+                               },
+                               dataType: "json"
+                           });
+                });
 				
 				$(".delete_button").on("click", function(event){
 					$.get("removeMembershipType?id=" + event.target.id, function(){
@@ -48,6 +67,7 @@
                             <th>Name</th>
                             <th>Length in days</th>
                             <th>Price</th>
+                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -58,6 +78,7 @@
                             <td>${membershipType.name}</td>
                             <td>${membershipType.lengthDays}</td>
                             <td>${membershipType.price}</td>
+                            <td><button class="edit_button" id=${membershipType.id}>edit</button></td>
                             <td><button class="delete_button" id=${membershipType.id}>delete</button></td>
                         </tr>
                     </#list>
