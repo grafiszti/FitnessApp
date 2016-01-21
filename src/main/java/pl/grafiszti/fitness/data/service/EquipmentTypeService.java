@@ -28,4 +28,8 @@ public class EquipmentTypeService {
   public void deleteById(Long id){
     equipmentTypeRepository.delete(id);
   }
+
+  public EquipmentTypeEntity findByName(String name) {
+    return equipmentTypeRepository.findByName(name);
+  }
 }

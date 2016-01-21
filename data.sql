@@ -72,12 +72,12 @@ CREATE TABLE Equipment (
   id                INT AUTO_INCREMENT,
   serial_number     VARCHAR(100),
   name              VARCHAR(100),
-  type_id           INT,
+  equipment_type_id           INT,
   purchase_date     DATE,
   last_service_date DATE,
   is_working        BOOLEAN,
   PRIMARY KEY (id),
-  CONSTRAINT `type_id_f` FOREIGN KEY (type_id)
+  CONSTRAINT `type_id_f` FOREIGN KEY (equipment_type_id)
   REFERENCES Equipment_type (id)
 );
 

@@ -8,7 +8,7 @@
           <li><a href="/employees">Employees</a></li>
           <li><a href="/customers">Customers</a></li>
           <#--<li><a href="/roles">Roles</a></li>-->
-          <li><a href="/eqTypes">Eq types</a></li>
+          <li><a href="/equipment">Equipment</a></li>
           <li><a href="/membershipTypes">Membership types</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

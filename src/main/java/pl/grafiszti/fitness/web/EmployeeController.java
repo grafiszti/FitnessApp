@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,14 +60,26 @@ public class EmployeeController {
   }
 
   @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
-  public String addEmployee(@RequestParam(value = "id") Long id,
-      @RequestParam(value = "name") String name, @RequestParam(value = "surname") String surname,
-      @RequestParam(value = "login") String login,
-      @RequestParam(value = "password") String password,
-      @RequestParam(value = "dateOfEmployment") String dateOfEmployment, @RequestParam(
-          value = "contractTypeId") Long contractTypeId,
-      @RequestParam(value = "roleTypeId") Long roleTypeId,
-      @RequestParam(value = "salaryHour") Integer salaryHour, Model model) throws ParseException {
+  public String addEmployee(
+      @RequestParam(value = "id")
+      Long id,
+      @RequestParam(value = "name")
+      String name,
+      @RequestParam(value = "surname")
+      String surname,
+      @RequestParam(value = "login")
+      String login,
+      @RequestParam(value = "password")
+      String password,
+      @RequestParam(value = "dateOfEmployment")
+      String dateOfEmployment,
+      @RequestParam(
+          value = "contractTypeId")
+      Long contractTypeId,
+      @RequestParam(value = "roleTypeId")
+      Long roleTypeId,
+      @RequestParam(value = "salaryHour")
+      Integer salaryHour, Model model) throws ParseException {
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = dateFormat.parse(dateOfEmployment);
     employeeService.save(new EmployeeEntity(id, name, surname, login, password, date,
@@ -77,12 +90,16 @@ public class EmployeeController {
 
   @ResponseBody
   @RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
-  public EmployeeEntity getEmployeeById(@RequestParam(value = "id") Long id, Model model) {
+  public EmployeeEntity getEmployeeById(
+      @RequestParam(value = "id")
+      Long id, Model model) {
     return employeeService.findEmployeeById(id);
   }
 
   @RequestMapping(value = "/removeEmployee", method = RequestMethod.GET)
-  public String removeEmployee(@RequestParam(value = "id") Long id, Model model) {
+  public String removeEmployee(
+      @RequestParam(value = "id")
+      Long id, Model model) {
     employeeService.deleteById(id);
     return VIEW_NAME;
   }
