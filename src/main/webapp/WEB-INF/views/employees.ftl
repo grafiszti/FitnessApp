@@ -105,8 +105,6 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Surname</th>
-                            <th>Login</th>
-                            <th>Password</th>
                             <th>Date of employment</th>
                             <th>Contract type</th>
                             <th>Role type</th>
@@ -122,8 +120,6 @@
                                 <td><#if employee.id??>${employee.id}</#if></td>
                                 <td><#if employee.name??>${employee.name}</#if></td>
                                 <td><#if employee.surname??>${employee.surname}</#if></td>
-                                <td><#if employee.login??>${employee.login}</#if></td>
-                                <td><#if employee.password??>${employee.password}</#if></td>
                                 <td><#if employee.dateOfEmployment??>${employee.dateOfEmployment?date}</#if></td>
                                 <td><#if employee.contractType??>${employee.contractType.name}</#if></td>
                                  <td><#if employee.roleType??>${employee.roleType.name}</#if></td>
