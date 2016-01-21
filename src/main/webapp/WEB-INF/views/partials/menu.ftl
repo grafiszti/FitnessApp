@@ -11,7 +11,7 @@
           <li><a href="/membershipTypes">Membership types</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-		  <li><a href="/logout">Login</a></li>
+		  <li><a href="/logout">Log out</a></li>
         </ul>
        </div>
      </div>
